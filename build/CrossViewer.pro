@@ -14,3 +14,5 @@ SOURCES += ../src/*.cpp
 HEADERS  += ../src/*.h
 
 FORMS    += ../ui/*.ui
+
+INCLUDEPATH += ../src/
