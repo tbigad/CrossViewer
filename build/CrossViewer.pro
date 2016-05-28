@@ -16,3 +16,6 @@ HEADERS  += ../src/*.h
 FORMS    += ../ui/*.ui
 
 INCLUDEPATH += ../src/
+
+RESOURCES += \
+    ../res/res.qrc

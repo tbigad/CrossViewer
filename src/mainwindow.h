@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMenu>
+#include <QAction>
 
 namespace Ui {
 class MainWindow;
@@ -16,6 +18,9 @@ public:
     ~MainWindow();
 
 private:
+    void initMenuBar();
+
+    QMenu *menuFile;
     Ui::MainWindow *ui;
 };
 

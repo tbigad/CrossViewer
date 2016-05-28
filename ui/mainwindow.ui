@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>616</width>
+    <height>397</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,7 +33,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>616</width>
      <height>20</height>
     </rect>
    </property>
@@ -47,6 +47,21 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionDelete">
+   <property name="icon">
+    <iconset resource="../res/res.qrc">
+     <normaloff>:/action_icons/action_ico/action_delete.ico</normaloff>:/action_icons/action_ico/action_delete.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Delete</string>
+   </property>
+   <property name="toolTip">
+    <string>Delete this file</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -56,6 +71,8 @@
    <header>View.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="../res/res.qrc"/>
+ </resources>
  <connections/>
 </ui>

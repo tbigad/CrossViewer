@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/action_icons">
+        <file>action_ico/action_delete.ico</file>
+    </qresource>
+</RCC>
