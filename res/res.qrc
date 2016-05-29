@@ -1,16 +1,15 @@
 <RCC>
-    <qresource prefix="/action_icons">
-        <file>action_ico/action_delete.ico</file>
-    </qresource>
     <qresource prefix="/mate">
         <file>action_ico/mind/Iconsmind-Outline-Arrow-Back-2.ico</file>
         <file>action_ico/mind/Iconsmind-Outline-Arrow-Next.ico</file>
-        <file>action_ico/mind/Iconsmind-Outline-Arrow-RightinCircle.ico</file>
         <file>action_ico/mind/Iconsmind-Outline-Delete-File.ico</file>
         <file>action_ico/mind/Iconsmind-Outline-Disk.ico</file>
         <file>action_ico/mind/Iconsmind-Outline-Fit-To-2.ico</file>
         <file>action_ico/mind/Iconsmind-Outline-Folder-Open.ico</file>
-        <file>action_ico/mind/Iconsmind-Outline-Minimize.ico</file>
         <file>action_ico/mind/Iconsmind-Outline-Orientation-2-2.ico</file>
+        <file>action_ico/mind/Iconsmind-Outline-Magnifi-Glass.ico</file>
+        <file>action_ico/mind/Iconsmind-Outline-Magnifi-Glass-2.ico</file>
+        <file>action_ico/mind/Iconsmind-Outline-FitTo.ico</file>
+        <file>action_ico/mind/Iconsmind-Outline-Arrow-Forward-2.ico</file>
     </qresource>
 </RCC>

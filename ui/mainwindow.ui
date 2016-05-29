@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>1170</width>
     <height>600</height>
    </rect>
   </property>
@@ -51,68 +51,395 @@
         <height>50</height>
        </size>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:white;</string>
+      </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>3</number>
+       </property>
        <property name="leftMargin">
-        <number>200</number>
+        <number>3</number>
        </property>
        <property name="rightMargin">
-        <number>200</number>
+        <number>33</number>
        </property>
        <item>
         <widget class="QPushButton" name="btn_plus">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton#btn_plus {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 15px;
+    border-color: gray;
+}
+QPushButton#btn_plus:hover {
+    border-width: 2px;
+    border-color: black;
+}
+QPushButton#btn_plus:pressed {
+    border-width: 2px;
+    border-color: gray;
+}</string>
+         </property>
          <property name="text">
-          <string>PushButton</string>
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../res/res.qrc">
+           <normaloff>:/mate/action_ico/mind/Iconsmind-Outline-Magnifi-Glass.ico</normaloff>:/mate/action_ico/mind/Iconsmind-Outline-Magnifi-Glass.ico</iconset>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="btn_minus">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton#btn_minus {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 15px;
+    border-color: gray;
+}
+QPushButton#btn_minus:hover {
+    border-width: 2px;
+    border-color: black;
+}
+QPushButton#btn_minus:pressed {
+    border-width: 2px;
+    border-color: gray;
+}</string>
+         </property>
          <property name="text">
-          <string>PushButton</string>
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../res/res.qrc">
+           <normaloff>:/mate/action_ico/mind/Iconsmind-Outline-Magnifi-Glass-2.ico</normaloff>:/mate/action_ico/mind/Iconsmind-Outline-Magnifi-Glass-2.ico</iconset>
          </property>
         </widget>
        </item>
        <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
         <widget class="QPushButton" name="btn_fitToWindow">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton#btn_fitToWindow {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 15px;
+    border-color: gray;
+}
+QPushButton#btn_fitToWindow:hover {
+    border-width: 2px;
+    border-color: black;
+}
+QPushButton#btn_fitToWindow:pressed {
+    border-width: 2px;
+    border-color: gray;
+}</string>
+         </property>
          <property name="text">
-          <string>PushButton</string>
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../res/res.qrc">
+           <normaloff>:/mate/action_ico/mind/Iconsmind-Outline-FitTo.ico</normaloff>:/mate/action_ico/mind/Iconsmind-Outline-FitTo.ico</iconset>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="btn_origSize">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton#btn_origSize {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 15px;
+    border-color: gray;
+}
+QPushButton#btn_origSize:hover {
+    border-width: 2px;
+    border-color: black;
+}
+QPushButton#btn_origSize:pressed {
+    border-width: 2px;
+    border-color: gray;
+}</string>
+         </property>
          <property name="text">
-          <string>PushButton</string>
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../res/res.qrc">
+           <normaloff>:/mate/action_ico/mind/Iconsmind-Outline-Fit-To-2.ico</normaloff>:/mate/action_ico/mind/Iconsmind-Outline-Fit-To-2.ico</iconset>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="btn_back">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton#btn_back {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 15px;
+    border-color: gray;
+}
+QPushButton#btn_back:hover {
+    border-width: 2px;
+    border-color: black;
+}
+QPushButton#btn_back:pressed {
+    border-width: 2px;
+    border-color: gray;
+}</string>
+         </property>
          <property name="text">
-          <string>PushButton</string>
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../res/res.qrc">
+           <normaloff>:/mate/action_ico/mind/Iconsmind-Outline-Arrow-Back-2.ico</normaloff>:/mate/action_ico/mind/Iconsmind-Outline-Arrow-Back-2.ico</iconset>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="btn_slideShow">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton#btn_slideShow {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 25px;
+    border-color: gray;
+}
+QPushButton#btn_slideShow:hover {
+    border-width: 2px;
+    border-color: black;
+}
+QPushButton#btn_slideShow:pressed {
+    border-width: 2px;
+    border-color: gray;
+}</string>
+         </property>
          <property name="text">
-          <string>PushButton</string>
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../res/res.qrc">
+           <normaloff>:/mate/action_ico/mind/Iconsmind-Outline-Arrow-Forward-2.ico</normaloff>:/mate/action_ico/mind/Iconsmind-Outline-Arrow-Forward-2.ico</iconset>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="btn_forward">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton#btn_forward {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 15px;
+    border-color: gray;
+}
+QPushButton#btn_forward:hover {
+    border-width: 2px;
+    border-color: black;
+}
+QPushButton#btn_forward:pressed {
+    border-width: 2px;
+    border-color: gray;
+}</string>
+         </property>
          <property name="text">
-          <string>PushButton</string>
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../res/res.qrc">
+           <normaloff>:/mate/action_ico/mind/Iconsmind-Outline-Arrow-Next.ico</normaloff>:/mate/action_ico/mind/Iconsmind-Outline-Arrow-Next.ico</iconset>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="btn_rotate">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton#btn_rotate {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 15px;
+    border-color: gray;
+}
+QPushButton#btn_rotate:hover {
+    border-width: 2px;
+    border-color: black;
+}
+QPushButton#btn_rotate:pressed {
+    border-width: 2px;
+    border-color: gray;
+}</string>
+         </property>
          <property name="text">
-          <string>PushButton</string>
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../res/res.qrc">
+           <normaloff>:/mate/action_ico/mind/Iconsmind-Outline-Orientation-2-2.ico</normaloff>:/mate/action_ico/mind/Iconsmind-Outline-Orientation-2-2.ico</iconset>
          </property>
         </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_delete">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton#btn_delete {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 15px;
+    border-color: gray;
+}
+QPushButton#btn_delete:hover {
+    border-width: 2px;
+    border-color: black;
+}
+QPushButton#btn_delete:pressed {
+    border-width: 2px;
+    border-color: gray;
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../res/res.qrc">
+           <normaloff>:/mate/action_ico/mind/Iconsmind-Outline-Delete-File.ico</normaloff>:/mate/action_ico/mind/Iconsmind-Outline-Delete-File.ico</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>
@@ -124,7 +451,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1170</width>
      <height>20</height>
     </rect>
    </property>

@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QMenu>
 #include <QAction>
+#include "ui_mainwindow.h"
+#include "Scene.h"
 
 namespace Ui {
 class MainWindow;
@@ -24,6 +26,7 @@ private:
     void initMenuBar();
 
     QMenu *menuFile;
+    Scene *m_scene;
     Ui::MainWindow *ui;
 };
 
