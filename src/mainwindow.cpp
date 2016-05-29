@@ -18,6 +18,16 @@ MainWindow::~MainWindow()
 void MainWindow::initMenuBar()
 {
     menuFile = new QMenu("File");
+
+    menuFile->addAction(ui->actionOpen);
     menuFile->addAction(ui->actionDelete);
+    menuFile->addAction(ui->actionSave_as);
+    menuFile->addSeparator();
+    menuFile->addAction(ui->actionExit);
     ui->menuBar->addMenu(menuFile);
+}
+
+void MainWindow::on_actionExit_triggered()
+{
+    close();
 }
