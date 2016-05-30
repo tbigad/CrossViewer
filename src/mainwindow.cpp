@@ -6,12 +6,15 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     initMenuBar();
+    m_scene = new Scene(this);
+    ui->graphicsView->setScene(m_scene);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
     delete menuFile;
+    delete m_scene;
 }
 
 void MainWindow::initMenuBar()
@@ -29,4 +32,23 @@ void MainWindow::initMenuBar()
 void MainWindow::on_actionExit_triggered()
 {
     close();
+}
+
+void MainWindow::on_actionOpen_triggered()
+{
+    QString file = QFileDialog::getOpenFileName(
+                this,tr("Select one file to open"), lastExitDir,
+                ViewerHelper::getSupportPixmapRWFormatsList());
+    if(!file.isEmpty()){
+        lastExitDir = ViewerHelper::getDirPath(file);
+        openFile(file);
+        m_scene->clear();
+    }
+    m_currentPixmap.load(file);
+    m_scene->setPixmap(m_currentPixmap);
+}
+
+void MainWindow::openFile(QString &f)
+{
+    qDebug()<< f;
 }

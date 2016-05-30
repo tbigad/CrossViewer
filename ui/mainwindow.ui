@@ -179,10 +179,12 @@ QPushButton#btn_minus:pressed {
 QPushButton#btn_fitToWindow:hover {
     border-width: 2px;
     border-color: black;
+	background-color:gray;
 }
 QPushButton#btn_fitToWindow:pressed {
     border-width: 2px;
     border-color: gray;
+	background-color:gray;
 }</string>
          </property>
          <property name="text">
