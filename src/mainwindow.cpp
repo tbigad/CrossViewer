@@ -42,10 +42,11 @@ void MainWindow::on_actionOpen_triggered()
     if(!file.isEmpty()){
         lastExitDir = ViewerHelper::getDirPath(file);
         openFile(file);
-        m_scene->clear();
+        m_scene->clear();    m_currentPixmap.load(file);
+        m_scene->setPixmap(m_currentPixmap);
+        setWindowTitle("CrossViewer - "+ ViewerHelper::getFileName(file));
     }
-    m_currentPixmap.load(file);
-    m_scene->setPixmap(m_currentPixmap);
+
 }
 
 void MainWindow::openFile(QString &f)

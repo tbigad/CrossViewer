@@ -12,4 +12,7 @@
         <file>action_ico/mind/Iconsmind-Outline-FitTo.ico</file>
         <file>action_ico/mind/Iconsmind-Outline-Arrow-Forward-2.ico</file>
     </qresource>
+    <qresource prefix="/app">
+        <file>action_ico/Double-J-Design-Origami-Colored-Pencil-Blue-camera.ico</file>
+    </qresource>
 </RCC>

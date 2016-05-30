@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>CrossViewer</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../res/res.qrc">
+    <normaloff>:/app/action_ico/Double-J-Design-Origami-Colored-Pencil-Blue-camera.ico</normaloff>:/app/action_ico/Double-J-Design-Origami-Colored-Pencil-Blue-camera.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>

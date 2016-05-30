@@ -17,7 +17,17 @@ QString ViewerHelper::getSupportPixmapRWFormatsList()
     return ret;
 }
 
-QString ViewerHelper::getDirPath(QString filePath)
+QString ViewerHelper::getDirPath(QString &filePath)
 {
     return QFileInfo(filePath).absolutePath();
+}
+
+QString ViewerHelper::getFileName(QString &filePath)
+{
+    return QFileInfo(filePath).baseName();
+}
+
+const QStringList &ViewerHelper::parseDir(QString &filePath)
+{
+
 }
