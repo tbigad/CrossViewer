@@ -27,7 +27,21 @@ QString ViewerHelper::getFileName(QString &filePath)
     return QFileInfo(filePath).baseName();
 }
 
-const QStringList &ViewerHelper::parseDir(QString &filePath)
+const QList<QString> ViewerHelper::parseDir(QString &filePath)
 {
+    QStringList filters;
+    filters<<"*.bmp"<<"*.jpg"<<"*.jpeg"<<"*.png"<<"*.ppm"<<"*.xbm"<<"*.xpm";
+    QDir dir(getDirPath(filePath));
+    dir.setNameFilters(filters);
+    QList<QString> fileInExistDerectory;
+    foreach (QString str, dir.entryList()) {
+        fileInExistDerectory<<dir.absoluteFilePath(str);
+    }
+    return fileInExistDerectory;
+}
 
+bool ViewerHelper::isFileExist(QString &filePath)
+{
+    QFileInfo fi(filePath);
+    return fi.exists();
 }
