@@ -72,6 +72,8 @@ public:
 public slots:
     void run(){
        std::thread t([=](){
+           std::this_thread::sleep_for
+                   (std::chrono::milliseconds(1500));
                 forever{
                     if(again){
                         emit nextImage();

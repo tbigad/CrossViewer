@@ -108,10 +108,9 @@ void MainWindow::on_btn_back_pressed()
 
 void MainWindow::mousePressEvent(QMouseEvent *e)
 {
-    //if(isFullScreen()){
-        qDebug()<<"normalMode";
+    if(isFullScreen()){
         emit normalMode();
-    //}
+    }
 }
 
 void MainWindow::showEvent(QShowEvent *)
@@ -121,11 +120,14 @@ void MainWindow::showEvent(QShowEvent *)
 
 void MainWindow::on_btn_slideShow_pressed()
 {
+    showFullScreen();
+    ui->buttonArea->hide();
+    ui->menuBar->hide();
+
     slshow = new SlideShow();
     slshow->moveToThread(slshow);
     connect(slshow,SIGNAL(nextImage()),this, SLOT(on_btn_forward_pressed()));
     connect(slshow,SIGNAL(finished()),slshow,SLOT(quit()));
-    //connect(slshow,SIGNAL(finished()),slshow,SLOT(deleteLater()));
 
     connect(this,&MainWindow::normalMode,[=](){
         slshow->stoped();
