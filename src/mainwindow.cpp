@@ -73,6 +73,7 @@ void MainWindow::load(QPixmap &pix)
 
 void MainWindow::on_btn_forward_pressed()
 {
+    qDebug()<<"on_btn_forward_pressed";
     if(m_currentIndex == -1)
         return;
     m_currentIndex++;
@@ -107,15 +108,33 @@ void MainWindow::on_btn_back_pressed()
 
 void MainWindow::mousePressEvent(QMouseEvent *e)
 {
-    if(this->isFullScreen())
-        if(e->button() == Qt::RightButton){
-            showNormal();
-            ui->buttonArea->show();
-            ui->menuBar->show();
-        }
+    //if(isFullScreen()){
+        qDebug()<<"normalMode";
+        emit normalMode();
+    //}
 }
 
-void MainWindow::openFile(QString &f)
+void MainWindow::showEvent(QShowEvent *)
 {
-    qDebug()<< f;
+    raise();
 }
+
+void MainWindow::on_btn_slideShow_pressed()
+{
+    slshow = new SlideShow();
+    slshow->moveToThread(slshow);
+    connect(slshow,SIGNAL(nextImage()),this, SLOT(on_btn_forward_pressed()));
+    connect(slshow,SIGNAL(finished()),slshow,SLOT(quit()));
+    //connect(slshow,SIGNAL(finished()),slshow,SLOT(deleteLater()));
+
+    connect(this,&MainWindow::normalMode,[=](){
+        slshow->stoped();
+        showNormal();
+        ui->buttonArea->show();
+        ui->menuBar->show();
+    });
+    slshow->start();
+
+}
+
+

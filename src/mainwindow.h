@@ -13,10 +13,13 @@
 #include <QFileDialog>
 #include <QDir>
 #include <QTimer>
+#include <QThread>
+#include <thread>
 
 namespace Ui {
 class MainWindow;
 }
+class SlideShow;
 
 class MainWindow : public QMainWindow
 {
@@ -25,7 +28,6 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-
 private slots:
     void on_actionExit_triggered();
     void on_actionOpen_triggered();
@@ -35,12 +37,18 @@ private slots:
 
 protected:
     void mousePressEvent(QMouseEvent *e);
+    void showEvent(QShowEvent *);
+signals:
+    void normalMode();
 
 private:
     void load(QString filePath);
     void load(QPixmap &pix);
     void initMenuBar();
+    void slideShow();
     void writeText(QString&);
+
+    SlideShow *slshow;
 
     QString lastExitDir;
     QMenu *menuFile;
@@ -50,5 +58,36 @@ private:
     QList<QString> m_imagesInDir;
     int m_currentIndex;
 };
+
+class SlideShow:public QThread
+{
+    Q_OBJECT
+
+    volatile bool again;
+public:
+    SlideShow(){
+        again = true;
+    }
+    virtual ~SlideShow(){}
+public slots:
+    void run(){
+       std::thread t([=](){
+                forever{
+                    if(again){
+                        emit nextImage();
+                        std::this_thread::sleep_for
+                                (std::chrono::milliseconds(1500));
+                    }else
+                        break;
+                }
+            });
+        t.join();
+     }
+    void stoped(){
+        again = false;
+    }
+ signals:
+     void nextImage();
+ };
 
 #endif // MAINWINDOW_H
