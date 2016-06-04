@@ -10,6 +10,9 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="acceptDrops">
+   <bool>true</bool>
+  </property>
   <property name="windowTitle">
    <string>CrossViewer</string>
   </property>
@@ -172,6 +175,9 @@ QPushButton#btn_minus:pressed {
            <width>30</width>
            <height>30</height>
           </size>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Fit to window&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="styleSheet">
           <string notr="true">QPushButton#btn_fitToWindow {
@@ -408,6 +414,9 @@ QPushButton#btn_rotate:pressed {
            <width>30</width>
            <height>30</height>
           </size>
+         </property>
+         <property name="acceptDrops">
+          <bool>false</bool>
          </property>
          <property name="styleSheet">
           <string notr="true">QPushButton#btn_delete {

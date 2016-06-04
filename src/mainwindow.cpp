@@ -8,8 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     initMenuBar();
     m_scene = new Scene(this);
     ui->graphicsView->setScene(m_scene);
-    QString str(tr(" Open file(press F3)or drop files here"));
-    writeText(str);
+    m_scene->clearScene();
 }
 
 MainWindow::~MainWindow()
@@ -17,6 +16,54 @@ MainWindow::~MainWindow()
     delete ui;
     delete menuFile;
     delete m_scene;
+}
+
+void MainWindow::dropEvent(QDropEvent *e)
+{
+    const QMimeData* mimeData = e->mimeData();
+    QList<QUrl> urls = mimeData->urls();
+    QUrl url = urls.at(0);
+
+    QString filename = url.toLocalFile();
+    load( filename );
+}
+
+void MainWindow::dragEnterEvent(QDragEnterEvent *event)
+{
+
+    const QMimeData* mimeData = event->mimeData();
+
+    if ( !mimeData->hasUrls() )
+    {
+        event->ignore();
+        return;
+    }
+
+    QList<QUrl> urls = mimeData->urls();
+
+    if(urls.count() != 1)
+    {
+        event->ignore();
+        return;
+    }
+
+    QUrl url = urls.at(0);
+    QString filename = url.toLocalFile();
+
+    // We don't test extension
+    if ( !QFileInfo(filename).exists() )
+    {
+        event->ignore();
+        return;
+    }
+
+    if ( !QFileInfo(filename).isFile() )
+    {
+        event->ignore();
+        return;
+    }
+
+    event->acceptProposedAction();
 }
 
 void MainWindow::initMenuBar()
@@ -29,14 +76,6 @@ void MainWindow::initMenuBar()
     menuFile->addSeparator();
     menuFile->addAction(ui->actionExit);
     ui->menuBar->addMenu(menuFile);
-}
-
-void MainWindow::writeText(QString &t)
-{
-    QFont font;
-    font.setFamily("Arial");
-    font.setPixelSize(16);
-    m_scene->addText(t,font);
 }
 
 void MainWindow::on_actionExit_triggered()
@@ -67,15 +106,17 @@ void MainWindow::load(QPixmap &pix)
     if(pix.rect().isValid()){
         m_scene->clear();
         m_scene->setPixmap(pix);
+        on_btn_fitToWindow_pressed();
     }
 }
 
 
 void MainWindow::on_btn_forward_pressed()
 {
-    qDebug()<<"on_btn_forward_pressed";
-    if(m_currentIndex == -1)
+    if(m_currentIndex <= -1){
+        m_scene->clearScene();
         return;
+    }
     m_currentIndex++;
     if(m_currentIndex < m_imagesInDir.count())
     {
@@ -91,8 +132,10 @@ void MainWindow::on_btn_forward_pressed()
 
 void MainWindow::on_btn_back_pressed()
 {
-    if(m_currentIndex <= -1)
+    if(m_currentIndex <= -1){
+        m_scene->clearScene();
         return;
+    }
     m_currentIndex--;
     if(m_currentIndex >= 0)
     {
@@ -136,7 +179,6 @@ void MainWindow::on_btn_slideShow_pressed()
         ui->menuBar->show();
     });
     slshow->start();
-
 }
 
 
@@ -150,4 +192,13 @@ void MainWindow::on_actionDelete_triggered()
 void MainWindow::on_btn_delete_pressed()
 {
     on_actionDelete_triggered();
+}
+
+void MainWindow::on_btn_fitToWindow_pressed()
+{
+    ui->graphicsView->resetScale();
+    double kw = (double)ui->graphicsView->width()/m_currentPixmap.width();
+    double kh = (double)ui->graphicsView->height()/m_currentPixmap.height();
+    if (qMin(kw,kh)<1)
+        ui->graphicsView->scale(qMin(kw,kh),qMin(kw,kh));
 }

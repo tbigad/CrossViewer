@@ -18,3 +18,18 @@ void Scene::setPixmap(QPixmap &pix)
 
 Scene::~Scene()
 {}
+
+void Scene::clearScene()
+{
+    clear();
+    QString str(tr(" Open file(press F3)or drop files here"));
+    writeText(str);
+}
+
+void Scene::writeText(QString &str)
+{
+    QFont font;
+    font.setFamily("Arial");
+    font.setPixelSize(16);
+    addText(str,font);
+}

@@ -7,9 +7,18 @@ View::View(QWidget * map) : QGraphicsView(map)
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setDragMode(QGraphicsView::ScrollHandDrag);
     setViewportUpdateMode (QGraphicsView::FullViewportUpdate);
+
+    setAcceptDrops(true);
 }
 
 View::~View()
 {
 }
+
+View::resetScale()
+{
+    setMatrix( QMatrix() );
+    centerOn(scene()->sceneRect().center());
+}
+
 

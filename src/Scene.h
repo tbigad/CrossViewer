@@ -11,6 +11,11 @@ public:
     Scene(QObject *parent = 0);
     void setPixmap(QPixmap &pix);
     ~Scene();
+public:
+    void clearScene();
+protected:
+private:
+    void writeText(QString &str);
 };
 
 #endif // SCENE_H

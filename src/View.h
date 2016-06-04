@@ -10,6 +10,8 @@ class View : public QGraphicsView
 public:
     View(QWidget * map);
     ~View();
+public:
+    resetScale();
 };
 
 #endif // _VIEW_H_

@@ -15,6 +15,7 @@
 #include <QTimer>
 #include <QThread>
 #include <thread>
+#include <QMimeData>
 
 namespace Ui {
 class MainWindow;
@@ -28,16 +29,19 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+protected:
+    void dropEvent(QDropEvent *e);
+    void dragEnterEvent(QDragEnterEvent *event);
 private slots:
     void on_actionExit_triggered();
     void on_actionOpen_triggered();
     void on_btn_forward_pressed();
     void on_btn_back_pressed();
     void on_btn_slideShow_pressed();
-
     void on_actionDelete_triggered();
-
     void on_btn_delete_pressed();
+
+    void on_btn_fitToWindow_pressed();
 
 protected:
     void mousePressEvent(QMouseEvent *e);
