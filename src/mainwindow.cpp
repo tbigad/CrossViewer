@@ -140,3 +140,14 @@ void MainWindow::on_btn_slideShow_pressed()
 }
 
 
+
+void MainWindow::on_actionDelete_triggered()
+{
+    ViewerHelper::removeFile(m_imagesInDir.at(m_currentIndex));
+    on_btn_forward_pressed();
+}
+
+void MainWindow::on_btn_delete_pressed()
+{
+    on_actionDelete_triggered();
+}

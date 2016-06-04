@@ -35,6 +35,10 @@ private slots:
     void on_btn_back_pressed();
     void on_btn_slideShow_pressed();
 
+    void on_actionDelete_triggered();
+
+    void on_btn_delete_pressed();
+
 protected:
     void mousePressEvent(QMouseEvent *e);
     void showEvent(QShowEvent *);

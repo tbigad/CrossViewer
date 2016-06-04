@@ -5,6 +5,7 @@
 #include <QString>
 #include <QDir>
 #include <QFileInfo>
+#include <QFile>
 
 class ViewerHelper
 {
@@ -14,7 +15,8 @@ public:
     static QString getDirPath(QString &filePath);
     static QString getFileName(QString &filePath);
     static const QList<QString> parseDir(QString &filePath);
-    static bool isFileExist(QString &filePath);
+    static bool isFileExist(const QString &filePath);
+    static bool removeFile(const QString &filePath);
 private:
     static QStringList suportedFilesInExistingDirectory;
 };

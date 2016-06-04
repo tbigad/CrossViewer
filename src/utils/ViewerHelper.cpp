@@ -40,8 +40,16 @@ const QList<QString> ViewerHelper::parseDir(QString &filePath)
     return fileInExistDerectory;
 }
 
-bool ViewerHelper::isFileExist(QString &filePath)
+bool ViewerHelper::isFileExist(const QString &filePath)
 {
     QFileInfo fi(filePath);
     return fi.exists();
+}
+
+bool ViewerHelper::removeFile(const QString &filePath)
+{
+    if(isFileExist(filePath))
+        return QFile(filePath).remove();
+    else
+        return false;
 }
