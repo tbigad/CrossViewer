@@ -43,6 +43,10 @@ private slots:
 
     void on_btn_fitToWindow_pressed();
 
+    void on_btn_origSize_pressed();
+
+    void on_btn_rotate_pressed();
+
 protected:
     void mousePressEvent(QMouseEvent *e);
     void showEvent(QShowEvent *);
@@ -65,6 +69,7 @@ private:
     Ui::MainWindow *ui;
     QList<QString> m_imagesInDir;
     int m_currentIndex;
+    qreal m_rotateAngle;
 };
 
 class SlideShow:public QThread

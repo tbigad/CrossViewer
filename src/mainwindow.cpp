@@ -2,7 +2,7 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),m_rotateAngle(1.0)
 {
     ui->setupUi(this);
     initMenuBar();
@@ -77,6 +77,7 @@ void MainWindow::initMenuBar()
     menuFile->addAction(ui->actionExit);
     ui->menuBar->addMenu(menuFile);
 }
+
 
 void MainWindow::on_actionExit_triggered()
 {
@@ -153,6 +154,7 @@ void MainWindow::mousePressEvent(QMouseEvent *e)
 {
     if(isFullScreen()){
         emit normalMode();
+        on_btn_fitToWindow_pressed();
     }
 }
 
@@ -201,4 +203,19 @@ void MainWindow::on_btn_fitToWindow_pressed()
     double kh = (double)ui->graphicsView->height()/m_currentPixmap.height();
     if (qMin(kw,kh)<1)
         ui->graphicsView->scale(qMin(kw,kh),qMin(kw,kh));
+}
+
+void MainWindow::on_btn_origSize_pressed()
+{
+    ui->graphicsView->resetScale();
+    ui->graphicsView->scale(1,1);
+}
+
+void MainWindow::on_btn_rotate_pressed()
+{
+    if(m_rotateAngle == -270)
+        m_rotateAngle = 0;
+    else
+        m_rotateAngle -=90;
+    ui->graphicsView->rotate(-90);
 }
