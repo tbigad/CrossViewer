@@ -2,13 +2,14 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow),m_rotateAngle(1.0)
+    ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     initMenuBar();
     m_scene = new Scene(this);
     ui->graphicsView->setScene(m_scene);
     m_scene->clearScene();
+    ui->graphicsView->setRotator(&m_rotateAngle);
 }
 
 MainWindow::~MainWindow()
@@ -50,7 +51,6 @@ void MainWindow::dragEnterEvent(QDragEnterEvent *event)
     QUrl url = urls.at(0);
     QString filename = url.toLocalFile();
 
-    // We don't test extension
     if ( !QFileInfo(filename).exists() )
     {
         event->ignore();
@@ -78,6 +78,18 @@ void MainWindow::initMenuBar()
     ui->menuBar->addMenu(menuFile);
 }
 
+void MainWindow::save(const QString &filePath)
+{
+    if(m_rotateAngle!=0){
+        QTransform tr;
+        tr.rotate(m_rotateAngle);
+
+        m_currentPixmap.transformed(tr).save(filePath);
+        return;
+    }
+    m_currentPixmap.save(filePath,ViewerHelper::getFormat(filePath).toStdString().c_str());
+}
+
 
 void MainWindow::on_actionExit_triggered()
 {
@@ -89,6 +101,7 @@ void MainWindow::on_actionOpen_triggered()
     QString file = QFileDialog::getOpenFileName(
                 this,tr("Select one file to open"), lastExitDir,
                 ViewerHelper::getSupportPixmapRWFormatsList());
+    if(!file.isEmpty())
         load(file);
 }
 
@@ -97,8 +110,9 @@ void MainWindow::load(QString filePath)
         lastExitDir = ViewerHelper::getDirPath(filePath);
         m_imagesInDir = ViewerHelper::parseDir(filePath);
         m_currentIndex = m_imagesInDir.indexOf(filePath);
-        setWindowTitle("CrossViewer - "+ ViewerHelper::getFileName(filePath));
         m_currentPixmap.load(filePath);
+        setWindowTitle("CrossViewer - "+ ViewerHelper::getFileName(filePath)+
+                       ViewerHelper::QSizeToQString(m_currentPixmap.size()));
         load(m_currentPixmap);
 }
 
@@ -108,6 +122,7 @@ void MainWindow::load(QPixmap &pix)
         m_scene->clear();
         m_scene->setPixmap(pix);
         on_btn_fitToWindow_pressed();
+        m_rotateAngle = 0;
     }
 }
 
@@ -118,7 +133,12 @@ void MainWindow::on_btn_forward_pressed()
         m_scene->clearScene();
         return;
     }
+    if(m_rotateAngle !=0){
+        save(m_imagesInDir.at(m_currentIndex));
+    }
     m_currentIndex++;
+    m_rotateAngle = 0;
+    ui->graphicsView->resetScale();
     if(m_currentIndex < m_imagesInDir.count())
     {
         if(QFileInfo(m_imagesInDir.at(m_currentIndex)).exists())
@@ -137,7 +157,12 @@ void MainWindow::on_btn_back_pressed()
         m_scene->clearScene();
         return;
     }
+    if(m_rotateAngle !=0){
+        save(m_imagesInDir.at(m_currentIndex));
+    }
     m_currentIndex--;
+    m_rotateAngle = 0;
+    ui->graphicsView->resetScale();
     if(m_currentIndex >= 0)
     {
         if(QFileInfo(m_imagesInDir.at(m_currentIndex)).exists())
@@ -217,5 +242,18 @@ void MainWindow::on_btn_rotate_pressed()
         m_rotateAngle = 0;
     else
         m_rotateAngle -=90;
+    qDebug()<<&m_rotateAngle<<":"<<m_rotateAngle;
     ui->graphicsView->rotate(-90);
+    on_btn_fitToWindow_pressed();
+}
+
+void MainWindow::on_actionSave_as_triggered()
+{
+    QString path;
+    QString formats = ViewerHelper::getSupportPixmapRWFormatsList();
+    path = QFileDialog::getSaveFileName(
+                this,tr("Save file"), lastExitDir,
+                ViewerHelper::getImageFormats(),&formats);
+    if(!path.isEmpty())
+     save(path);
 }
