@@ -16,6 +16,7 @@
 #include <QThread>
 #include <thread>
 #include <QMimeData>
+#include <QDropEvent>
 
 namespace Ui {
 class MainWindow;
@@ -47,6 +48,8 @@ private slots:
 
     void on_btn_rotate_pressed();
 
+    void on_actionSave_as_triggered();
+
 protected:
     void mousePressEvent(QMouseEvent *e);
     void showEvent(QShowEvent *);
@@ -59,6 +62,7 @@ private:
     void initMenuBar();
     void slideShow();
     void writeText(QString&);
+    void save(const QString &filePath);
 
     SlideShow *slshow;
 
@@ -69,7 +73,7 @@ private:
     Ui::MainWindow *ui;
     QList<QString> m_imagesInDir;
     int m_currentIndex;
-    qreal m_rotateAngle;
+    qreal m_rotateAngle=0;
 };
 
 class SlideShow:public QThread

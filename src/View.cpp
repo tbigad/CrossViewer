@@ -17,7 +17,11 @@ View::~View()
 
 View::resetScale()
 {
-    setMatrix( QMatrix() );
+    QMatrix m;
+    qreal r = *rotator;
+    m.rotate(r);
+    qDebug()<<rotator<<":"<<*rotator;
+    setMatrix(m);
     centerOn(scene()->sceneRect().center());
 }
 
