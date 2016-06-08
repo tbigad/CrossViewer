@@ -11,6 +11,12 @@
         <file>action_ico/mind/Iconsmind-Outline-Magnifi-Glass-2.ico</file>
         <file>action_ico/mind/Iconsmind-Outline-FitTo.ico</file>
         <file>action_ico/mind/Iconsmind-Outline-Arrow-Forward-2.ico</file>
+        <file>action_ico/mind/favicon.ico</file>
+        <file>action_ico/mind/Iconsmind-Outline-Resize.ico</file>
+        <file>action_ico/mind/Iconsmind-Outline-Lock.ico</file>
+        <file>action_ico/mind/Iconsmind-Outline-Unlock-2.ico</file>
+        <file>action_ico/mind/Icons8-Ios7-Arrows-Down-4.ico</file>
+        <file>action_ico/mind/Icons8-Ios7-Arrows-Up-4.ico</file>
     </qresource>
     <qresource prefix="/app">
         <file>action_ico/Double-J-Design-Origami-Colored-Pencil-Blue-camera.ico</file>

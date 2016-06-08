@@ -21,5 +21,4 @@ FORMS    += ../ui/*.ui
 INCLUDEPATH += ../src/ \
                ../src/utils/
 
-RESOURCES += \
-    ../res/res.qrc
+RESOURCES += ../res/res.qrc
