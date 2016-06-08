@@ -16,7 +16,9 @@ MainWindow::~MainWindow()
 {
     delete ui;
     delete menuFile;
+    delete menuAction;
     delete m_scene;
+    delete panel;
 }
 
 void MainWindow::dropEvent(QDropEvent *e)
@@ -69,13 +71,16 @@ void MainWindow::dragEnterEvent(QDragEnterEvent *event)
 void MainWindow::initMenuBar()
 {
     menuFile = new QMenu("File");
-
     menuFile->addAction(ui->actionOpen);
     menuFile->addAction(ui->actionDelete);
     menuFile->addAction(ui->actionSave_as);
     menuFile->addSeparator();
     menuFile->addAction(ui->actionExit);
     ui->menuBar->addMenu(menuFile);
+
+    menuAction = new QMenu("Action");
+    menuAction->addAction(ui->actionEdit);
+    ui->menuBar->addMenu(menuAction);
 }
 
 void MainWindow::save(const QString &filePath)
@@ -256,4 +261,9 @@ void MainWindow::on_actionSave_as_triggered()
                 ViewerHelper::getImageFormats(),&formats);
     if(!path.isEmpty())
      save(path);
+}
+
+void MainWindow::on_actionEdit_triggered()
+{
+    panel = new EditorPanel(this);
 }

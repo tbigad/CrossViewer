@@ -17,6 +17,7 @@
 #include <thread>
 #include <QMimeData>
 #include <QDropEvent>
+#include "EditorPanel.h"
 
 namespace Ui {
 class MainWindow;
@@ -50,6 +51,8 @@ private slots:
 
     void on_actionSave_as_triggered();
 
+    void on_actionEdit_triggered();
+
 protected:
     void mousePressEvent(QMouseEvent *e);
     void showEvent(QShowEvent *);
@@ -68,12 +71,14 @@ private:
 
     QString lastExitDir;
     QMenu *menuFile;
+    QMenu *menuAction;
     Scene *m_scene;
     QPixmap m_currentPixmap;
     Ui::MainWindow *ui;
     QList<QString> m_imagesInDir;
     int m_currentIndex;
     qreal m_rotateAngle=0;
+    EditorPanel *panel;
 };
 
 class SlideShow:public QThread

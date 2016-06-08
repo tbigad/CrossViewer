@@ -527,6 +527,21 @@ QPushButton#btn_delete:pressed {
     <string>F10</string>
    </property>
   </action>
+  <action name="actionEdit">
+   <property name="icon">
+    <iconset resource="../res/res.qrc">
+     <normaloff>:/mate/action_ico/mind/Iconsmind-Outline-Resize.ico</normaloff>:/mate/action_ico/mind/Iconsmind-Outline-Resize.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Edit</string>
+   </property>
+   <property name="toolTip">
+    <string>Resize for example</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+E</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
