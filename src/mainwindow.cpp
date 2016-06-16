@@ -15,10 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete menuFile;
     delete menuAction;
     delete m_scene;
-    delete panel;
 }
 
 void MainWindow::dropEvent(QDropEvent *e)
@@ -70,29 +68,34 @@ void MainWindow::dragEnterEvent(QDragEnterEvent *event)
 
 void MainWindow::initMenuBar()
 {
-    menuFile = new QMenu("File");
+    menuFile = std::make_shared<QMenu>("File");
     menuFile->addAction(ui->actionOpen);
     menuFile->addAction(ui->actionDelete);
     menuFile->addAction(ui->actionSave_as);
     menuFile->addSeparator();
     menuFile->addAction(ui->actionExit);
-    ui->menuBar->addMenu(menuFile);
+    ui->menuBar->addMenu(menuFile.get());
 
     menuAction = new QMenu("Action");
     menuAction->addAction(ui->actionEdit);
     ui->menuBar->addMenu(menuAction);
 }
 
-void MainWindow::save(const QString &filePath)
+void MainWindow::save(const QString &filePath, QPixmap pix, int quality)
 {
+    QPixmap pixmap;
+    if(pix.isNull())
+        pixmap = m_currentPixmap;
+    else
+        pixmap = pix;
     if(m_rotateAngle!=0){
         QTransform tr;
         tr.rotate(m_rotateAngle);
 
-        m_currentPixmap.transformed(tr).save(filePath);
+        pixmap.transformed(tr).save(filePath);
         return;
     }
-    m_currentPixmap.save(filePath,ViewerHelper::getFormat(filePath).toStdString().c_str());
+    pixmap.save(filePath,ViewerHelper::getFormat(filePath).toStdString().c_str(),quality);
 }
 
 
@@ -182,6 +185,7 @@ void MainWindow::on_btn_back_pressed()
 
 void MainWindow::mousePressEvent(QMouseEvent *e)
 {
+    Q_UNUSED(e)
     if(isFullScreen()){
         emit normalMode();
         on_btn_fitToWindow_pressed();
@@ -252,7 +256,7 @@ void MainWindow::on_btn_rotate_pressed()
     on_btn_fitToWindow_pressed();
 }
 
-void MainWindow::on_actionSave_as_triggered()
+void MainWindow::on_actionSave_as_triggered(QPixmap pix, int quality)
 {
     QString path;
     QString formats = ViewerHelper::getSupportPixmapRWFormatsList();
@@ -260,10 +264,18 @@ void MainWindow::on_actionSave_as_triggered()
                 this,tr("Save file"), lastExitDir,
                 ViewerHelper::getImageFormats(),&formats);
     if(!path.isEmpty())
-     save(path);
+     save(path,pix,quality);
 }
 
 void MainWindow::on_actionEdit_triggered()
 {
-    panel = new EditorPanel(this);
+    std::unique_ptr<EditorPanel> panel(new EditorPanel(m_currentPixmap,this));
+    connect(panel.get(),&EditorPanel::toSave,[this](QPixmap pix, int qui){
+        on_actionSave_as_triggered(pix,qui);
+        load(pix);
+    });
+    QRect panelRect = panel->rect();
+    panelRect.moveCenter(geometry().center());
+    panel->setGeometry(panelRect);
+    panel->exec();
 }

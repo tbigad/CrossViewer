@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QDebug>
-
+#include <memory>
 #include <QMainWindow>
 #include <QMouseEvent>
 #include <QMenu>
@@ -49,7 +49,7 @@ private slots:
 
     void on_btn_rotate_pressed();
 
-    void on_actionSave_as_triggered();
+    void on_actionSave_as_triggered(QPixmap = QPixmap(), int quality = -1);
 
     void on_actionEdit_triggered();
 
@@ -65,12 +65,11 @@ private:
     void initMenuBar();
     void slideShow();
     void writeText(QString&);
-    void save(const QString &filePath);
+    void save(const QString &filePath, QPixmap pix = QPixmap(), int quality = -1);
 
     SlideShow *slshow;
-
     QString lastExitDir;
-    QMenu *menuFile;
+    std::shared_ptr<QMenu> menuFile;
     QMenu *menuAction;
     Scene *m_scene;
     QPixmap m_currentPixmap;
@@ -78,7 +77,6 @@ private:
     QList<QString> m_imagesInDir;
     int m_currentIndex;
     qreal m_rotateAngle=0;
-    EditorPanel *panel;
 };
 
 class SlideShow:public QThread

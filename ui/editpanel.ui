@@ -15,8 +15,11 @@
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: white;
-border:&quot;2px solid rgb(0, 0, 0)&quot;;
-border-radius:2px;</string>
+color:black;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+	border-radius: 2px;</string>
   </property>
   <widget class="QSpinBox" name="spinBoxHeight">
    <property name="geometry">
@@ -30,8 +33,11 @@ border-radius:2px;</string>
    <property name="styleSheet">
     <string notr="true">QSpinBox#spinBoxHeight {
 background:lightgray;
-border:&quot;1px solid black&quot;;
-border-radius:2px;
+color:black;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+	border-radius: 5px;
 font-family:ArialMT;
 font-size:12px;
 color:#3B3B3B;
@@ -64,8 +70,10 @@ border:none;
    <property name="styleSheet">
     <string notr="true">QSpinBox#spinBoxWigth {
 background:lightgray;
-border:&quot;1px solid black&quot;;
-border-radius:2px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+	border-radius: 5px;
 font-family:ArialMT;
 font-size:12px;
 color:#3B3B3B;
@@ -89,7 +97,7 @@ border:none;
   <widget class="QSpinBox" name="spinBoxPesent">
    <property name="geometry">
     <rect>
-     <x>132</x>
+     <x>130</x>
      <y>100</y>
      <width>61</width>
      <height>22</height>
@@ -98,8 +106,10 @@ border:none;
    <property name="styleSheet">
     <string notr="true">QSpinBox#spinBoxPesent {
 background:lightgray;
-border:&quot;1px solid black&quot;;
-border-radius:2px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+	border-radius: 5px;
 font-family:ArialMT;
 font-size:12px;
 color:#3B3B3B;
@@ -155,7 +165,8 @@ QPushButton#btn_lock:checked {
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/mate/action_ico/mind/Iconsmind-Outline-Resize.ico);</string>
+    <string notr="true">image: url(:/mate/action_ico/mind/Iconsmind-Outline-Resize.ico);
+    border: none;</string>
    </property>
    <property name="text">
     <string/>
@@ -171,7 +182,8 @@ QPushButton#btn_lock:checked {
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/mate/action_ico/mind/favicon.ico);</string>
+    <string notr="true">image: url(:/mate/action_ico/mind/favicon.ico);
+    border: none;</string>
    </property>
    <property name="text">
     <string/>
@@ -188,8 +200,10 @@ QPushButton#btn_lock:checked {
    </property>
    <property name="styleSheet">
     <string notr="true">color:black;
-
-border:&quot;1px solid black&quot;;</string>
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+	border-radius: 10px;</string>
    </property>
    <property name="text">
     <string>Ok</string>
@@ -205,8 +219,11 @@ border:&quot;1px solid black&quot;;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border:&quot;1px solid black&quot;;
-color:black;</string>
+    <string notr="true">color:black;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+	border-radius: 10px;</string>
    </property>
    <property name="text">
     <string>Cancel</string>

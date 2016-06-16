@@ -13,7 +13,7 @@ public:
     ~View();
     void setRotator(qreal* rotate){rotator = rotate;}
 public:
-    resetScale();
+    void resetScale();
     qreal* rotator;
 };
 
