@@ -53,6 +53,10 @@ private slots:
 
     void on_actionEdit_triggered();
 
+    void on_btn_plus_pressed();
+
+    void on_btn_minus_pressed();
+
 protected:
     void mousePressEvent(QMouseEvent *e);
     void showEvent(QShowEvent *);

@@ -279,3 +279,13 @@ void MainWindow::on_actionEdit_triggered()
     panel->setGeometry(panelRect);
     panel->exec();
 }
+
+void MainWindow::on_btn_plus_pressed()
+{
+    ui->graphicsView->zoomPlus(1.5);
+}
+
+void MainWindow::on_btn_minus_pressed()
+{
+    ui->graphicsView->zoomMinus(1.5);
+}

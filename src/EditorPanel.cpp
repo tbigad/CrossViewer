@@ -1,7 +1,7 @@
 #include "EditorPanel.h"
 
 EditorPanel::EditorPanel(QPixmap pix, QWidget *parent) :
-    QDialog(parent,Qt::Tool|Qt::CustomizeWindowHint),
+    QDialog(parent,Qt::CustomizeWindowHint),
     ui(new Ui::EditorPanelUI)
 {
     ui->setupUi(this);
