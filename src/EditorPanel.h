@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "ui_editpanel.h"
 #include "mainwindow.h"
+#include <QSpinBox>
 
 namespace Ui {
 class EditorPanelUI;
@@ -25,6 +26,7 @@ signals:
 private:
     Ui::EditorPanelUI *ui;
     QPixmap currentPix;
+    QSize pixSize;
 };
 
 #endif // EDITORPANEL_H

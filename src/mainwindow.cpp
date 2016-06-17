@@ -197,8 +197,37 @@ void MainWindow::showEvent(QShowEvent *)
     raise();
 }
 
+void MainWindow::resizeEvent(QResizeEvent *)
+{
+    on_btn_fitToWindow_pressed();
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *e)
+{
+    qDebug()<<"keyPressEvent";
+    switch (e->key()) {
+    case Qt::Key_Escape:
+        if(isFullScreen()){
+            emit normalMode();
+        }
+        break;
+    case Qt::Key_Left:
+    case Qt::Key_Backspace:
+            on_btn_back_pressed();
+        break;
+    case Qt::Key_Right:
+    case Qt::Key_Space:
+            on_btn_forward_pressed();
+        break;
+    default:
+        break;
+    }
+}
+
 void MainWindow::on_btn_slideShow_pressed()
 {
+    if(m_currentPixmap.isNull())
+        on_actionOpen_triggered();
     showFullScreen();
     ui->buttonArea->hide();
     ui->menuBar->hide();

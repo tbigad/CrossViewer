@@ -18,6 +18,7 @@
 #include <QMimeData>
 #include <QDropEvent>
 #include "EditorPanel.h"
+#include <QKeyEvent>
 
 namespace Ui {
 class MainWindow;
@@ -42,24 +43,19 @@ private slots:
     void on_btn_slideShow_pressed();
     void on_actionDelete_triggered();
     void on_btn_delete_pressed();
-
     void on_btn_fitToWindow_pressed();
-
     void on_btn_origSize_pressed();
-
     void on_btn_rotate_pressed();
-
     void on_actionSave_as_triggered(QPixmap = QPixmap(), int quality = -1);
-
     void on_actionEdit_triggered();
-
     void on_btn_plus_pressed();
-
     void on_btn_minus_pressed();
 
 protected:
     void mousePressEvent(QMouseEvent *e);
     void showEvent(QShowEvent *);
+    void resizeEvent(QResizeEvent *);
+    void keyPressEvent(QKeyEvent *e);
 signals:
     void normalMode();
 
